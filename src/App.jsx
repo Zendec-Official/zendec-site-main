@@ -7,6 +7,7 @@ import Templates from './components/Templates.jsx'
 import ContactForm from './components/ContactForm.jsx'
 import Footer from './components/Footer.jsx'
 import About from './components/About.jsx'
+import Portfolio from './components/Portfolio.jsx'
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <ThreeD />
       <Parallax />
       <Templates />
+      <Portfolio/>
       <ContactForm />
       <Footer />
     </>
