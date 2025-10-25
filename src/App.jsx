@@ -1,10 +1,34 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Hero from './components/Hero.jsx'
+import NavBar from './components/NavBar.jsx'
+import ThreeD from './components/ThreeD.jsx'
+import Parallax from './components/Parallax.jsx'
+import Templates from './components/Templates.jsx'
+import ContactForm from './components/ContactForm.jsx'
+import Footer from './components/Footer.jsx'
+import About from './components/About.jsx'
+
+function Home() {
+  return (
+    <>
+      <Hero />
+      <ThreeD />
+      <Parallax />
+      <Templates />
+      <ContactForm />
+      <Footer />
+    </>
+  )
+}
 
 function App() {
   return (
     <main>
-      <Hero />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </main>
   )
 }
