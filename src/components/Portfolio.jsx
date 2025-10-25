@@ -7,11 +7,18 @@ const Portfolio = () => {
     <div className="bg-gradient-to-b from-[#120012] to-[#050005] min-h-screen flex flex-col items-center justify-center px-4 font-condensed">
       
       {/* Title Section */}
+{/* Title Section */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 animate-fadeSlide">
+        <h1
+          style={{ fontFamily: '"Roboto Condensed", sans-serif' }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 animate-fadeSlide"
+        >
           Browse from our Collection of Template Websites
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-300 whitespace-nowrap overflow-x-auto animate-fadeSlide delay-200">
+        <p
+          style={{ fontFamily: '"Roboto Condensed", sans-serif' }}
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 animate-fadeSlide delay-200"
+        >
           Explore ready-made website templates designed for speed, style, and performance — easily customizable to fit your brand.
         </p>
       </div>
