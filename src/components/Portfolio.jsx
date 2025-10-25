@@ -4,10 +4,8 @@ import styled from 'styled-components';
 const Portfolio = () => {
   const cardCount = 5; // max 5 cards
   return (
-    <div className="bg-gradient-to-b from-[#120012] to-[#050005] min-h-screen flex flex-col items-center justify-center px-4 font-condensed">
-      
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center px-4 font-condensed">
       {/* Title Section */}
-{/* Title Section */}
       <div className="text-center mb-12">
         <h1
           style={{ fontFamily: '"Roboto Condensed", sans-serif' }}
