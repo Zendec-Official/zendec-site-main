@@ -3,7 +3,6 @@ import React from 'react'
 const Hero = () => {
   return (
     <div className="relative h-screen flex items-center bg-black overflow-hidden">
-      {/* Background Spline model shifted slightly to the right */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <iframe
           src="https://my.spline.design/nexbotrobotcharacterconcept-ba0ff6f4a728df38bb33251affe8c4dc/"
@@ -13,7 +12,6 @@ const Hero = () => {
         ></iframe>
       </div>
 
-      {/* Overlay text */}
       <div className="relative z-10 text-left pl-24 mt-36 space-y-6">
         <h1
           className="text-white text-8xl font-bold leading-tight"
