@@ -8,7 +8,7 @@ const Hero = () => {
           src="https://my.spline.design/nexbotrobotcharacterconcept-ba0ff6f4a728df38bb33251affe8c4dc/"
           frameBorder="0"
           title="Spline 3D Model"
-          className="absolute top-0 w-[150%] h-full bg-black"
+          className="absolute top-20 w-full h-full bg-black"
         ></iframe>
       </div>
 
