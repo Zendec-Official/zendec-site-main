@@ -12,7 +12,7 @@ const Hero = () => {
         ></iframe>
       </div>
 
-      <div className="relative z-10 text-left pl-24 mt-36">
+      <div className="relative z-10 text-left pl-24 mt-55">
         <h1
           className="text-white text-8xl font-bold leading-none mb-0"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
