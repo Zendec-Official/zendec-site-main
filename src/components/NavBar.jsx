@@ -21,7 +21,7 @@ const Navbar = () => {
             Home
           </a>
           <a
-            href="#portfolio"
+            href="C:\site\zendec-site-main\src\components\Portfolio.jsx"
             className="font-medium text-gray-300 hover:text-white transition"
           >
             Portfolio
@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* Desktop Button */}
         <div className="hidden md:block">
           <a
-            href="#contact"
+            href="zendec-site-main\src\components\ContactForm.jsx"
             className="bg-white text-black px-5 py-2 rounded-md font-medium hover:bg-gray-200 transition"
           >
             Get In Touch
