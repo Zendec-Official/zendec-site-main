@@ -94,7 +94,7 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: var(--w);
     height: var(--h);
-    border-radius: 16px;
+    border-radius: 0px;
     transform: rotateY(calc(360deg / var(--quantity) * var(--index))) translateZ(var(--translateZ));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: rgba(var(--color-card), 0.15); 
