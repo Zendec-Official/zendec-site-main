@@ -15,7 +15,6 @@ function Home() {
       <Hero />
       <ThreeD />
       <Parallax />
-      <Templates />
       <Portfolio/>
       <ContactForm />
       <Footer />
