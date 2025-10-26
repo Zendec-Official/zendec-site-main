@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Hero from './components/Hero.jsx'
 import NavBar from './components/NavBar.jsx'
 import ThreeD from './components/ThreeD.jsx'
-import Parallax from './components/Parallax.jsx'
+import Showcase from './components/Showcase.jsx'
 import Templates from './components/Templates.jsx'
 import ContactForm from './components/ContactForm.jsx'
 import Footer from './components/Footer.jsx'
@@ -14,7 +14,7 @@ function Home() {
     <>
       <Hero />
       <ThreeD />
-      <Parallax />
+      <Showcase />
       <Portfolio/>
       <ContactForm />
       <Footer />
