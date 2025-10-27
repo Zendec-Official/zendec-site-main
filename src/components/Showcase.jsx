@@ -42,7 +42,7 @@ const Showcase = () => {
 }, [isTablet]);
 
     return (
-        <section id="showcase" className="relative h-screen">
+        <section id="showcase" className="relative h-screen overflow-hidden">
             <div className="media relative w-full h-full">
               
                 <video 

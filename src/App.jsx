@@ -17,7 +17,7 @@ function Home() {
       <Showcase />
       <Portfolio/>
       <ContactForm />
-      <Footer />
+      
     </>
   )
 }
@@ -29,7 +29,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactForm />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
+      <Footer />
     </main>
   )
 }

@@ -1,53 +1,77 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // npm install lucide-react
+import { Menu, X } from "lucide-react";
+import { useLocation, Link } from "react-router-dom"; // ✅ make sure you're using react-router-dom
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // ✅ detect current route
+
+  // Helper to check active path
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="bg-black text-white px-8 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-        <img src="/logo.jpg" alt="Logo" className="h-10 w-auto" />
+          <img src="/logo.jpg" alt="Logo" className="h-10 w-auto" />
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-10">
-          <a
-            href="#home"
-            className="relative font-medium text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-white after:scale-x-100 after:origin-left after:transition-transform duration-300"
+          <Link
+            to="/"
+            className={`relative font-medium transition ${
+              isActive("/")
+                ? "text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-white after:scale-x-100"
+                : "text-gray-300 hover:text-white"
+            }`}
           >
             Home
-          </a>
-          <a
-            href="C:\site\zendec-site-main\src\components\Portfolio.jsx"
-            className="font-medium text-gray-300 hover:text-white transition"
+          </Link>
+
+          <Link
+            to="/portfolio"
+            className={`relative font-medium transition ${
+              isActive("/portfolio")
+                ? "text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-white after:scale-x-100"
+                : "text-gray-300 hover:text-white"
+            }`}
           >
             Portfolio
-          </a>
-          <a
-            href="#about"
-            className="font-medium text-gray-300 hover:text-white transition"
+          </Link>
+
+          <Link
+            to="/about"
+            className={`relative font-medium transition ${
+              isActive("/about")
+                ? "text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-white after:scale-x-100"
+                : "text-gray-300 hover:text-white"
+            }`}
           >
             About
-          </a>
-          <a
-            href="#contact"
-            className="font-medium text-gray-300 hover:text-white transition"
+          </Link>
+
+          <Link
+            to="/contact"
+            className={`relative font-medium transition ${
+              isActive("/contact")
+                ? "text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-white after:scale-x-100"
+                : "text-gray-300 hover:text-white"
+            }`}
           >
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Button */}
         <div className="hidden md:block">
-          <a
-            href="zendec-site-main\src\components\ContactForm.jsx"
+          <Link
+            to="/contact"
             className="bg-white text-black px-5 py-2 rounded-md font-medium hover:bg-gray-200 transition"
           >
             Get In Touch
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -62,42 +86,54 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden mt-4 space-y-4 text-center">
-          <a
-            href="#home"
-            className="block font-medium text-white hover:text-gray-300 transition"
+          <Link
+            to="/"
+            className={`block font-medium transition ${
+              isActive("/") ? "text-white" : "text-gray-300 hover:text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             Home
-          </a>
-          <a
-            href="#portfolio"
-            className="block font-medium text-gray-300 hover:text-white transition"
+          </Link>
+          <Link
+            to="/portfolio"
+            className={`block font-medium transition ${
+              isActive("/portfolio")
+                ? "text-white"
+                : "text-gray-300 hover:text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             Portfolio
-          </a>
-          <a
-            href="#about"
-            className="block font-medium text-gray-300 hover:text-white transition"
+          </Link>
+          <Link
+            to="/about"
+            className={`block font-medium transition ${
+              isActive("/about") ? "text-white" : "text-gray-300 hover:text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             About
-          </a>
-          <a
-            href="#contact"
-            className="block font-medium text-gray-300 hover:text-white transition"
+          </Link>
+          <Link
+            to="/contact"
+            className={`block font-medium transition ${
+              isActive("/contact")
+                ? "text-white"
+                : "text-gray-300 hover:text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             Contact
-          </a>
+          </Link>
 
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="inline-block mt-2 bg-white text-black px-5 py-2 rounded-md font-medium hover:bg-gray-200 transition"
             onClick={() => setMenuOpen(false)}
           >
             Get In Touch
-          </a>
+          </Link>
         </div>
       )}
     </nav>

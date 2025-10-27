@@ -31,7 +31,7 @@ const Portfolio = () => {
                 key={i}
                 style={{
                   "--index": i,
-                  "--color-card": "180, 90, 255" // purple accent
+                  "--color-card": "255, 255, 255" // purple accent
                 }}
               >
                 {/* Add your video here */}
@@ -52,7 +52,7 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: 50px;
 
   .wrapper {
