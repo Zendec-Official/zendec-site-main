@@ -10,18 +10,18 @@ const ThreeD = () => {
         title="3D Background"
       ></iframe>
 
-      <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] z-[5]"></div>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] z-[5]"></div>
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full px-4 md:px-0">
         <div className="text-left md:w-1/2 space-y-6">
           <h1
-            className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-lg"
             style={{ fontFamily: "'Roboto Condensed', sans-serif" }}
           >
             Let your story unfold in 3D
           </h1>
           <p
-            className="text-gray-300 text-base sm:text-lg md:text-2xl max-w-xl leading-relaxed"
+            className="text-gray-100 text-base sm:text-lg md:text-2xl max-w-xl leading-relaxed drop-shadow-md"
             style={{ fontFamily: "'Roboto Condensed', sans-serif" }}
           >
             Move beyond static design. With 3D elements, your website becomes dynamic and expressive — helping customers visualize your brand and products in the most immersive way possible.
