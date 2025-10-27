@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const Portfolio = () => {
   const cardCount = 5; // max 5 cards
   return (
-    <div className="bg-black min-h-screen flex flex-col items-center justify-center px-4 font-condensed">
+    <div className="bg-black h-[60vh] md:h-[80vh] flex flex-col items-center justify-center px-4 font-condensed">
       {/* Title Section */}
       <div className="text-center mb-12">
         <h1
           style={{ fontFamily: '"Roboto Condensed", sans-serif' }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 animate-fadeSlide"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 animate-fadeSlide mt-25"
         >
           Browse from our Collection of Template Websites
         </h1>
@@ -31,10 +31,9 @@ const Portfolio = () => {
                 key={i}
                 style={{
                   "--index": i,
-                  "--color-card": "255, 255, 255" // purple accent
+                  "--color-card": "255, 255, 255" // white accent
                 }}
               >
-                {/* Add your video here */}
                 {/* Example: <video src="path-to-video.mp4" autoPlay muted loop /> */}
               </div>
             ))}
@@ -57,9 +56,9 @@ const StyledWrapper = styled.div`
 
   .wrapper {
     position: relative;
-    width: 1000px;
-    max-width: 100%;
-    height: 400px;
+    width: 90%;
+    max-width: 1000px; /* desktop max */
+    height: 400px; /* desktop height */
     perspective: 2000px;
     display: flex;
     align-items: center;
@@ -67,9 +66,9 @@ const StyledWrapper = styled.div`
   }
 
   .inner {
-    --w: 300px;
-    --h: 180px;
-    --translateZ: 280px; 
+    --w: 300px;      /* desktop card width */
+    --h: 180px;      /* desktop card height */
+    --translateZ: 280px;
     --rotateX: -10deg;
     --perspective: 2000px;
     position: relative;
@@ -82,7 +81,7 @@ const StyledWrapper = styled.div`
   }
 
   .inner:hover {
-    animation-play-state: paused; /* pause rotation on hover */
+    animation-play-state: paused;
   }
 
   @keyframes rotateRing {
@@ -97,23 +96,21 @@ const StyledWrapper = styled.div`
     border-radius: 0px;
     transform: rotateY(calc(360deg / var(--quantity) * var(--index))) translateZ(var(--translateZ));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(var(--color-card), 0.15); 
+    background: rgba(var(--color-card), 0.15);
     border: 1px solid rgba(var(--color-card), 0.4);
     box-shadow: 0 0 25px rgba(var(--color-card), 0.3), inset 0 0 30px rgba(var(--color-card), 0.2);
     overflow: hidden;
   }
 
-  /* Hover pop-out - subtle translateZ only */
   .card:hover {
     transform: rotateY(calc(360deg / var(--quantity) * var(--index))) translateZ(calc(var(--translateZ) + 20px));
     box-shadow: 0 0 45px rgba(var(--color-card), 0.5), inset 0 0 30px rgba(var(--color-card), 0.4);
   }
 
-  /* video inside card */
   .card video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* maintain aspect ratio */
+    object-fit: cover;
     display: block;
   }
 
@@ -122,19 +119,47 @@ const StyledWrapper = styled.div`
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at top, rgba(255, 255, 255, 0.15), transparent 60%);
-    opacity: 0.2; /* subtle glow */
+    opacity: 0.2;
     pointer-events: none;
   }
 
-  /* Animation classes for title */
   @keyframes fadeSlide {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-  .animate-fadeSlide {
-    animation: fadeSlide 1s ease forwards;
+  .animate-fadeSlide { animation: fadeSlide 1s ease forwards; }
+  .animate-fadeSlide.delay-200 { animation-delay: 0.2s; }
+
+  /* Mobile responsiveness */
+  @media (max-width: 1024px) {
+    .inner {
+      --w: 220px;
+      --h: 140px;
+      --translateZ: 180px;
+      --perspective: 1500px;
+    }
+    .wrapper { height: 300px; }
   }
-  .animate-fadeSlide.delay-200 {
-    animation-delay: 0.2s;
+
+  @media (max-width: 768px) {
+    .inner {
+      --w: 180px;
+      --h: 120px;
+      --translateZ: 140px;
+      --perspective: 1200px;
+    }
+    .wrapper { height: 220px; }
+  }
+
+  @media (max-width: 480px) {
+    .inner {
+      --w: 140px;
+      --h: 100px;
+      --translateZ: 100px;
+      --perspective: 1000px;
+    }
+    .wrapper { height: 180px; }
+    h1 { font-size: 1.8rem; }
+    p { font-size: 1rem; }
   }
 `;

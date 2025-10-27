@@ -31,7 +31,7 @@ const ContactForm = () => {
       >
         {/* Heading */}
         <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-semibold mb-2">
+          <h1 className="text-3xl sm:text-4xl font-semibold mb-2 mt-15">
             Let's Get In Touch
           </h1>
           <p className="text-gray-400 text-sm sm:text-base leading-relaxed">

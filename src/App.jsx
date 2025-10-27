@@ -14,7 +14,9 @@ function Home() {
     <>
       <Hero />
       <ThreeD />
-      <Showcase />
+      <div className="hidden sm:block">
+        <Showcase />
+      </div>
       <Portfolio/>
       <ContactForm />
       
