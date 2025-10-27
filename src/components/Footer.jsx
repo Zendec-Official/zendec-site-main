@@ -17,13 +17,13 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div>
+        {/* Quick Links - Hidden on mobile, visible on md and up */}
+        <div className="hidden md:block">
           <h3 className="font-semibold mb-4 text-lg">Quick Links</h3>
           <ul className="space-y-2 text-gray-400">
             <li><a href="#home" className="hover:text-white">Home</a></li>
             <li><a href="#services" className="hover:text-white">Services</a></li>
-            <li><a href="#portfolio" className="hover:text-white">Portfolio / Templates</a></li>
+            <li><a href="#portfolio" className="hover:text-white">Portfolio</a></li>
             <li><a href="#about" className="hover:text-white">About Us</a></li>
             <li><a href="#contact" className="hover:text-white">Contact</a></li>
           </ul>

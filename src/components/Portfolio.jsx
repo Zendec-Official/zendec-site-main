@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Portfolio = () => {
   const cardCount = 5; // max 5 cards
   return (
-    <div className="bg-black h-[60vh] md:h-[80vh] flex flex-col items-center justify-center px-4 font-condensed">
+    <div className="bg-black h-[80vh] md:h-[80vh] flex flex-col items-center justify-center px-4 font-condensed">
       {/* Title Section */}
       <div className="text-center mb-12">
         <h1
