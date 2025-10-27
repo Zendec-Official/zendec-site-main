@@ -3,15 +3,19 @@ import React from 'react'
 const ThreeD = () => {
   return (
     <div className="relative h-[70vh] md:h-screen flex items-center bg-black overflow-hidden px-6 sm:px-12 lg:px-24">
+      {/* 3D Spline iframe */}
       <iframe
         src="https://my.spline.design/chips-a0808815b2eecfacc8205f0eb9b0b7d5/"
         frameBorder="0"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-[60vh] sm:h-full lg:left-0 lg:translate-x-0 lg:w-[150%] lg:h-full"
+        loading="lazy"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[180%] sm:w-[200%] lg:left-0 lg:translate-x-0 lg:w-[150%] h-[60vh] sm:h-[80vh] md:h-full bg-black pointer-events-none will-change-transform"
         title="3D Background"
       ></iframe>
 
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] z-[5]"></div>
+      {/* Mobile-only frosted glass overlay */}
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] z-5 md:hidden"></div>
 
+      {/* Text content */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full px-4 md:px-0">
         <div className="text-left md:w-1/2 space-y-6">
           <h1
