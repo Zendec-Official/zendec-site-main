@@ -31,7 +31,7 @@ const Showcase = () => {
                 opacity: 1,
             }, 0)
             .to('.mask img', {
-                scale: 1,
+                scale: 1.1,
             }, 0)
             .to('.content', { 
                 opacity: 1, 
