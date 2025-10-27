@@ -22,7 +22,7 @@ const Hero = () => {
         </h1>
 
         <h1
-          className="text-white text-2xl sm:text-6xl lg:text-8xl font-bold leading-none flex items-baseline gap-4 -mt-4"
+          className="text-white text-2xl sm:text-6xl lg:text-8xl font-bold leading-none flex items-baseline gap-2 -mt-4"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           WITH A SITE THAT{' '}
