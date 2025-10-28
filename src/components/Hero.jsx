@@ -137,20 +137,22 @@ const Hero = () => {
     canvas.addEventListener("mousemove", handleMouseMove);
     canvas.addEventListener("mouseleave", handleMouseLeave);
 
-    // Animation loop
-    const animate = () => {
-      ctx.fillStyle = "#000000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+const animate = () => {
+  // Clear canvas fully (so lines stay crisp)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((particle) => {
-        particle.update(particles);
-        particle.draw();
-      });
+  // Draw particles (with partial opacity for a small trail)
+  particles.forEach((particle) => {
+    particle.update(particles);
+    particle.draw(); // particle.draw uses ctx.globalAlpha = this.opacity
+  });
 
-      drawConnections();
+  // Draw connecting lines (full opacity, no trail)
+  drawConnections();
 
-      animationFrameId = requestAnimationFrame(animate);
-    };
+  animationFrameId = requestAnimationFrame(animate);
+};
+
 
     animate();
 
