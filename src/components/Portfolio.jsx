@@ -1,8 +1,46 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef, useEffect } from "react";
+import styled from "styled-components";
 
 const Portfolio = () => {
-  const cardCount = 5; // max 5 cards
+  const cardCount = 5;
+
+  const videoSources = [
+    "/videos/portfolio-video1.mp4",
+    "/videos/portfolio-video2.mp4",
+    "/videos/portfolio-video5.mp4",
+    "/videos/portfolio-video3.mp4",
+    "/videos/portfolio-video4.mp4",
+  ];
+
+  const videoRefs = useRef([]);
+
+  useEffect(() => {
+    // ensure all videos start playing smoothly when loaded
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // ignore autoplay restrictions silently
+          });
+        }
+      }
+    });
+  }, []);
+
+  const handleMouseEnter = (index) => {
+    const video = videoRefs.current[index];
+    if (video && !video.paused) video.pause();
+  };
+
+  const handleMouseLeave = (index) => {
+    const video = videoRefs.current[index];
+    if (video && video.paused) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) playPromise.catch(() => {});
+    }
+  };
+
   return (
     <div className="bg-black h-[80vh] md:h-[80vh] flex flex-col items-center justify-center px-4 font-condensed">
       {/* Title Section */}
@@ -31,10 +69,19 @@ const Portfolio = () => {
                 key={i}
                 style={{
                   "--index": i,
-                  "--color-card": "255, 255, 255" // white accent
+                  "--color-card": "255, 255, 255",
                 }}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseLeave={() => handleMouseLeave(i)}
               >
-                {/* Example: <video src="path-to-video.mp4" autoPlay muted loop /> */}
+                <video
+                  ref={(el) => (videoRefs.current[i] = el)}
+                  src={videoSources[i]}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
               </div>
             ))}
           </div>
@@ -57,8 +104,8 @@ const StyledWrapper = styled.div`
   .wrapper {
     position: relative;
     width: 90%;
-    max-width: 1000px; /* desktop max */
-    height: 400px; /* desktop height */
+    max-width: 1000px;
+    height: 400px;
     perspective: 2000px;
     display: flex;
     align-items: center;
@@ -66,8 +113,8 @@ const StyledWrapper = styled.div`
   }
 
   .inner {
-    --w: 300px;      /* desktop card width */
-    --h: 180px;      /* desktop card height */
+    --w: 300px;
+    --h: 180px;
     --translateZ: 280px;
     --rotateX: -10deg;
     --perspective: 2000px;
@@ -77,7 +124,8 @@ const StyledWrapper = styled.div`
     transform-style: preserve-3d;
     transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(15deg);
     animation: rotateRing 25s linear infinite;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease-out;
+    will-change: transform;
   }
 
   .inner:hover {
@@ -85,8 +133,12 @@ const StyledWrapper = styled.div`
   }
 
   @keyframes rotateRing {
-    from { transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(15deg); }
-    to { transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(375deg); }
+    from {
+      transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(15deg);
+    }
+    to {
+      transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(375deg);
+    }
   }
 
   .card {
@@ -95,16 +147,21 @@ const StyledWrapper = styled.div`
     height: var(--h);
     border-radius: 0px;
     transform: rotateY(calc(360deg / var(--quantity) * var(--index))) translateZ(var(--translateZ));
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(var(--color-card), 0.15);
+    transition: transform 0.5s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    background: rgba(var(--color-card), 0.1);
     border: 1px solid rgba(var(--color-card), 0.4);
-    box-shadow: 0 0 25px rgba(var(--color-card), 0.3), inset 0 0 30px rgba(var(--color-card), 0.2);
+    box-shadow: 0 0 25px rgba(var(--color-card), 0.3),
+      inset 0 0 30px rgba(var(--color-card), 0.15);
     overflow: hidden;
+    will-change: transform, box-shadow;
   }
 
   .card:hover {
-    transform: rotateY(calc(360deg / var(--quantity) * var(--index))) translateZ(calc(var(--translateZ) + 20px));
-    box-shadow: 0 0 45px rgba(var(--color-card), 0.5), inset 0 0 30px rgba(var(--color-card), 0.4);
+    transform: rotateY(calc(360deg / var(--quantity) * var(--index)))
+      translateZ(calc(var(--translateZ) + 25px));
+    box-shadow: 0 0 50px rgba(var(--color-card), 0.55),
+      inset 0 0 30px rgba(var(--color-card), 0.35);
+    filter: brightness(1.1);
   }
 
   .card video {
@@ -112,6 +169,13 @@ const StyledWrapper = styled.div`
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    will-change: transform, opacity;
+  }
+
+  .card:hover video {
+    transform: scale(1.02);
+    opacity: 0.9;
   }
 
   .card::before {
@@ -124,13 +188,24 @@ const StyledWrapper = styled.div`
   }
 
   @keyframes fadeSlide {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .animate-fadeSlide { animation: fadeSlide 1s ease forwards; }
-  .animate-fadeSlide.delay-200 { animation-delay: 0.2s; }
 
-  /* Mobile responsiveness */
+  .animate-fadeSlide {
+    animation: fadeSlide 1s ease forwards;
+  }
+  .animate-fadeSlide.delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  /* Responsiveness */
   @media (max-width: 1024px) {
     .inner {
       --w: 220px;
@@ -138,7 +213,9 @@ const StyledWrapper = styled.div`
       --translateZ: 180px;
       --perspective: 1500px;
     }
-    .wrapper { height: 300px; }
+    .wrapper {
+      height: 300px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -148,7 +225,9 @@ const StyledWrapper = styled.div`
       --translateZ: 140px;
       --perspective: 1200px;
     }
-    .wrapper { height: 220px; }
+    .wrapper {
+      height: 220px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -158,8 +237,14 @@ const StyledWrapper = styled.div`
       --translateZ: 100px;
       --perspective: 1000px;
     }
-    .wrapper { height: 180px; }
-    h1 { font-size: 1.8rem; }
-    p { font-size: 1rem; }
+    .wrapper {
+      height: 180px;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
 `;
