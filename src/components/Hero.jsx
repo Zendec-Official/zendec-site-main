@@ -90,7 +90,7 @@ const Hero = () => {
     }
 
     // Initialize particles
-    const particleCount = Math.min(150, Math.floor((canvas.width * canvas.height) / 5000));
+    const particleCount = Math.min(165, Math.floor((canvas.width * canvas.height) / 5000));
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
