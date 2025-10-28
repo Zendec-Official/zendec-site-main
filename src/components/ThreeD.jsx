@@ -1,19 +1,23 @@
-import React from 'react'
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import MacbookModel14 from "./models/Macbook-14.jsx";
+import StudioLights from "./three/StudioLights.jsx";
 
 const ThreeD = () => {
   return (
-    <div className="relative h-[70vh] md:h-screen flex items-center bg-black overflow-hidden px-6 sm:px-12 lg:px-24">
-      {/* 3D Spline iframe */}
-      <iframe
-        src="https://my.spline.design/genkubgreetingrobot-RrALkLG2mnZESnxSqvvdGt3z/"
-        frameBorder="0"
-        loading="lazy"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[180%] sm:w-[200%] lg:left-0 lg:translate-x-0 lg:w-[150%] h-[60vh] sm:h-[80vh] md:h-full bg-black pointer-events-none will-change-transform"
-        title="3D Background"
-      ></iframe>
-
-      {/* Mobile-only frosted glass overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] z-5 md:hidden"></div>
+    <div className="relative h-[70vh] md:h-screen flex items-center justify-center bg-black overflow-hidden px-6 sm:px-12 lg:px-24 pb-18 md:pb-0">
+      {/* 3D MacBook Model */}
+      <div className="absolute inset-0 md:left-200 pb-35 md:pb-0">
+        <Canvas
+          camera={{ position: [0, 2, 5], fov: 50 }}
+          className="w-full h-full translate-y-45 md:translate-y-0"
+        >
+          <StudioLights />
+          <OrbitControls enableZoom={false} />
+          <MacbookModel14 scale={0.07} position={[0, -1, 0]} />
+        </Canvas>
+      </div>
 
       {/* Text content */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full px-4 md:px-0">
@@ -28,12 +32,14 @@ const ThreeD = () => {
             className="text-gray-100 text-base sm:text-lg md:text-2xl max-w-xl leading-relaxed drop-shadow-md"
             style={{ fontFamily: "'Roboto Condensed', sans-serif" }}
           >
-            Move beyond static design. With 3D elements, your website becomes dynamic and expressive — helping customers visualize your brand and products in the most immersive way possible.
+            Move beyond static design. With 3D elements, your website becomes
+            dynamic and expressive — helping customers visualize your brand and
+            products in the most immersive way possible.
           </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ThreeD
+export default ThreeD;
