@@ -6,7 +6,7 @@ import StudioLights from "./three/StudioLights.jsx";
 
 const ThreeD = () => {
   return (
-    <div className="relative h-[70vh] md:h-screen flex items-center justify-center bg-black overflow-hidden px-6 sm:px-12 lg:px-24 pb-18 md:pb-0">
+    <div className="relative h-[70vh] md:h-screen flex items-center justify-center bg-black overflow-hidden px-6 sm:px-12 lg:px-24 pb-24 md:pb-0">
       {/* 3D MacBook Model */}
       <div className="absolute inset-0 md:left-200 pb-35 md:pb-0">
         <Canvas
