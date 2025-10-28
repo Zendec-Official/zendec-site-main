@@ -5,7 +5,7 @@ const ThreeD = () => {
     <div className="relative h-[70vh] md:h-screen flex items-center bg-black overflow-hidden px-6 sm:px-12 lg:px-24">
       {/* 3D Spline iframe */}
       <iframe
-        src="https://my.spline.design/chips-a0808815b2eecfacc8205f0eb9b0b7d5/"
+        src="https://my.spline.design/genkubgreetingrobot-RrALkLG2mnZESnxSqvvdGt3z/"
         frameBorder="0"
         loading="lazy"
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[180%] sm:w-[200%] lg:left-0 lg:translate-x-0 lg:w-[150%] h-[60vh] sm:h-[80vh] md:h-full bg-black pointer-events-none will-change-transform"
