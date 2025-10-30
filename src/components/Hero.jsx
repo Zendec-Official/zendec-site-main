@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const canvasRef = useRef(null);
@@ -194,12 +195,12 @@ const animate = () => {
           </span>
         </h1>
 
-        <button
-          className="sm:hidden mt-8 px-6 py-3 bg-white text-black rounded-full font-semibold shadow-lg hover:bg-opacity-90 transition-all"
-          onClick={() => (window.location.href = "/contact")}
-        >
-          Get Started
-        </button>
+        <Link
+  to="/contact"
+  className="sm:hidden mt-8 px-6 py-3 bg-white text-black rounded-full font-semibold shadow-lg hover:bg-opacity-90 transition-all inline-block"
+>
+  Get Started
+</Link>
       </div>
     </div>
   );
